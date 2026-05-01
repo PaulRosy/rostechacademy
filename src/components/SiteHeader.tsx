@@ -1,9 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   const { user, signOut } = useAuth();
+  const { isAdmin } = useIsAdmin();
   const path = useRouterState({ select: (s) => s.location.pathname });
 
   const navLink = (to: string, label: string) => (
@@ -28,6 +30,7 @@ export function SiteHeader() {
           {navLink("/about", "About")}
           {navLink("/contact", "Contact")}
           {user && navLink("/dashboard", "Dashboard")}
+          {isAdmin && navLink("/admin", "Admin")}
         </nav>
         <div className="flex items-center gap-3">
           {user ? (
