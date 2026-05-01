@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 
 export const Route = createFileRoute("/admin/enrollments")({
-  component: AdminEnrollments;
+  component: AdminEnrollments,
 });
 
 type Row = {
